@@ -5,7 +5,7 @@ android {
     buildToolsVersion '21.1.1'
     defaultConfig {
         applicationId "android.bignerdranch.com.criminalintent"
-        minSdkVersion 8
+        minSdkVersion 15
         targetSdkVersion 17
         versionCode 1
         versionName "1.0"
