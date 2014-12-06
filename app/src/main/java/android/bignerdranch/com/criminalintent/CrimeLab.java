@@ -1,6 +1,7 @@
 package android.bignerdranch.com.criminalintent;
 
 import android.content.Context;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.UUID;
@@ -9,6 +10,7 @@ import java.util.UUID;
  * Created by eugene.wong on 3/12/2014.
  */
 public class CrimeLab {
+    private static final String TAG = "CrimeLab";
     private ArrayList<Crime> mCrimes;
 
     private static CrimeLab sCrimeLab;
@@ -38,7 +40,7 @@ public class CrimeLab {
 
     public Crime getCrime(UUID id) {
         for (Crime c: mCrimes){
-            if (c.getId() == id) {
+            if (c.getId().equals(id)) {
                 return c;
             }
         }
