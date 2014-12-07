@@ -2,7 +2,7 @@ package android.bignerdranch.com.criminalintent;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.app.Fragment;
+import android.support.v4.app.Fragment;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.text.format.DateFormat;
@@ -28,11 +28,20 @@ public class CrimeFragment extends Fragment {
     private Button mDateButton;
     private CheckBox mSolvedCheckBox;
 
+    public static CrimeFragment newInstance(UUID crimeId) {
+        Bundle args = new Bundle();
+        args.putSerializable(EXTRA_CRIME_ID, crimeId);
+
+        CrimeFragment fragment = new CrimeFragment();
+        fragment.setArguments(args);
+
+        return fragment;
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        UUID crimeId = (UUID)getActivity().getIntent().getSerializableExtra(EXTRA_CRIME_ID);
-        Log.d(TAG, crimeId.toString());
+        UUID crimeId = (UUID)getArguments().getSerializable(EXTRA_CRIME_ID);
 
         mCrime = CrimeLab.get(getActivity()).getCrime(crimeId);
         if (mCrime == null) {
